@@ -1,3 +1,8 @@
+<?php 
+  require 'functions.php';
+  $products = get_products();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -33,15 +38,14 @@
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                     <li class="nav-item dropdown ms-5 my-auto">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        <a onclick="document.location='keranjang.php'" class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <span class="fa-stack" data-count="2">
                                 <i class="fa-solid fa-cart-shopping fa-stack-1x fa-inverse"
                                     style="font-size: 25px; color: black;"></i>
                             </span>
                         </a>
-                        <ul class="dropdown-menu container" aria-labelledby="navbarDropdown"
-                            style="right:0; left: auto; width: 500px;">
+                        <ul class="dropdown-menu container" aria-labelledby="navbarDropdown" style="right:0; left: auto; width: 500px;">
                             <li class="container">
                                 <div class="row mx-auto">
                                     <div class="col align-self-center text-start h5">Keranjang(0)</div>
@@ -72,7 +76,8 @@
 
                             <li class="container">
                                 <a class="dropdown-item row d-flex mx-auto" href="#">
-                                    <img src="assets/image/meja.png" class="cart-img rounded col-3 float-start" alt="">
+                                    <img src="assets/image/meja.png" class="cart-img rounded col-3 float-start"
+                                        alt="">
                                     <div class="ms-1 overflow-hidden col-7 align-content-center">
                                         <p class="my-auto cart-text">Meja Gaming Meja Komputer GG Gemink FLOTH FL120 -
                                             Merah</p>
@@ -90,8 +95,7 @@
                             <i class="fa-sharp fa-solid fa-circle-user"></i>
                             <div class="p ps-2">Profil</div>
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
-                            style="right: auto;; left: auto;width: 500px;">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: auto;; left: auto;width: 500px;">
 
                             <li><a class="dropdown-item" href="#">Action</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -108,62 +112,60 @@
         </div>
     </nav>
 
-    <div class="container-fluid content justify-content-center">
-        <div class="row">
-            <div class="col">
-                <img src="assets/image/meja.png" alt="" class="img-desc">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide slide-custom-body rounded-3"
+        data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5"
+                aria-label="Slide 6"></button>
+        </div>
+        <div class="carousel-inner slide-custom">
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="assets/image/banner.webp" class="d-block mx-auto carousel-img" alt="">
             </div>
-            <div class="col-4">
-                <div class="h5 fw-bold">Meja Gaming Meja Komputer GG Gemink FLOTH FL120 - Merah</div>
-                <div class="h2 fw-bolder my-4">Rp500.000</div>
-                <hr class="dropdown-divider mt-2">
-                <div class="h6 mt-4">
-                    READY STOCK !!
-                    <br>
-                    Produk Dijamin Baru 100%
-                    <br>
-                    =====================
-                    <br>
-                    Main game tidak lengkap kalau tidak ada mejanya, jangan lupakan pendukung penting dalam bermain game
-                    yaitu meja gaming.
-                    Meja Gaming FLOTH FL120 hadir dengan desain sederhana dan harga terjangkau, yang dilengkapi kaki
-                    meja metal, dengan
-                    edging PVC elegan dengan pilihan warna merah, abu-abu dan biru.
-
-                    Spesifikasi :
-
-                    - Ukuran : 120 x 60 cm
-
-                    - Kaki Metal 5x2.5cm
-
-                    - Edging PVC
-
-                    - High Quality Chipboard
-
-                    - 2x Groumet
-                </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="assets/image/Picture.png" class="d-block mx-auto carousel-img" alt="">
             </div>
-            <div class="col ">
-                <div class="card mx-auto w-75" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Atur Jumlah dan Catatan</h5>
-                        <h4 class="card-subtitle mb-2 text-muted text-uppercase mt-2">Counter</h4>
-                        <div class="row">
-                            <div class="col-6">
-                                <h5 class="text-muted mt-5 my-auto">Subtotal</h5>
-                            </div>
-                            <div class="col-6 mt-5">
-                                <div class="h5 text-end ">Rp 500.000</div>
-                            </div>
-                        </div>
-                        <div class="container-fluid d-flex justify-content-center">
-                            <div class="btn btn-success w-100 mt-3 fw-bold">+ Keranjang</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="assets/image/meja.png" class="d-block mx-auto carousel-img" alt="">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="assets/image/Picture.png" class="d-block mx-auto carousel-img" alt="">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="assets/image/Picture.png" class="d-block mx-auto carousel-img" alt="">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="assets/image/Picture.png" class="d-block mx-auto carousel-img" alt="">
             </div>
         </div>
     </div>
+
+    <section id="product">
+        <div class="container-fluid mt-5 justify-content-center" style="flex-wrap: wrap; display: flex">
+          <?php foreach ($products as $product) :?>
+            <a href="deskripsi.php?id=<?= $product['id'] ?>" class="px-3">
+                <div class="card" style="width: 18rem; border-radius: 18px;">
+                    <img src="<?= $product['image'] ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="my-auto card-title h-50 fw-normal"><?= $product['name']?></h5>
+                        <p class="card-title fw-bold fs-4">Rp<?= number_format($product['price'], 0, ',', '.')?></p>
+                      </div>
+                </div>
+            </a>
+          <?php endforeach?>
+        </div>
+
+    </section>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
