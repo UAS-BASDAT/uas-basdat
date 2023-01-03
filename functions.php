@@ -16,4 +16,11 @@
     $product = mysqli_fetch_assoc($result);
     return $product;
   }
-?>
+
+  function get_product_cart(){
+    global $conn;
+    $query = "SELECT * FROM cart";
+    $result = mysqli_query($conn, $query);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+  }
