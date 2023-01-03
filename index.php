@@ -1,6 +1,6 @@
-<?php
-require 'functions.php';
-$products = get_products();
+<?php 
+  require_once 'functions.php';
+  $products = get_products();
 ?>
 
 <!doctype html>

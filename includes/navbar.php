@@ -1,5 +1,10 @@
 <?php
-$products_cart = get_product_cart();
+    require_once('functions.php');
+    $cart_items = get_all_cart();
+    $total_quantity = 0;
+    foreach($cart_items as $i) {
+        $total_quantity += $i['quantity'];
+    }
 ?>
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -26,7 +31,7 @@ $products_cart = get_product_cart();
                     <ul class="dropdown-menu container" aria-labelledby="navbarDropdown" style="right:0; left: auto; width: 500px;">
                         <li class="container">
                             <div class="row mx-auto">
-                                <div class="col align-self-center text-start h5">Keranjang(0)</div>
+                                <div class="col align-self-center text-start h5">Keranjang(<?= $total_quantity ?>)</div>
                                 <div class="col align-self-center text-end"><a href="keranjang.php">Lihat Sekarang</a></div>
                             </div>
                         </li>
@@ -36,16 +41,14 @@ $products_cart = get_product_cart();
                         </li>
 
                         <li class="container">
-                            <?php foreach ($products as $product) : ?>
+                            <?php foreach ($cart_items as $item) : ?>
                                 <a class="dropdown-item row d-flex mx-auto" href="keranjang.php">
-                                    <img src="<?= ($product['image'])?>" class="cart-img rounded col-3 float-start" alt="">
+                                    <img src="<?= $item['image'] ?>" class="cart-img rounded col-3 float-start" alt="">
                                     <div class="ms-1 overflow-hidden col-7 align-content-center">
-                                        <p class="my-auto cart-text"><?= ($product['name'])?></p>
-                                        <?php foreach ($products_cart as $product_cart) : ?>
-                                        <p class="my-1"><?= $product_cart['quantity']?> Barang</p>
-                                        <?php endforeach ?>
+                                        <p class="my-auto cart-text"><?= $item['name'] ?></p>
+                                        <p class="my-1"><?= $item['quantity']?> Barang</p>
                                     </div>
-                                    <div class="col-2 p text-end">Rp<?= number_format($product['price'], 0, ',', '.') ?></div>
+                                    <div class="col-2 p text-end">Rp<?= number_format($item['price'], 0, ',', '.') ?></div>
                                 </a>
                             <?php endforeach ?>
                         </li>

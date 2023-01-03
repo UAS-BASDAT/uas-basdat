@@ -17,9 +17,9 @@
     return $product;
   }
 
-  function get_product_cart(){
+  function get_all_cart() {
     global $conn;
-    $query = "SELECT * FROM cart";
+    $query = "SELECT product.*, cart.* FROM product INNER JOIN cart ON cart.id_product = product.id";
     $result = mysqli_query($conn, $query);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $products;
