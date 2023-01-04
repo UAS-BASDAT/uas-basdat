@@ -18,7 +18,7 @@ $product = get_product_detail($_GET['id']);
 </head>
 
 <body>
-    <?php include 'includes/navbar.php'?>
+    <?php include 'includes/navbar.php' ?>
     <div class="container-fluid content justify-content-center" id="product" value=<?= $product['id'] ?>>
         <div class="row">
             <div class="col">
@@ -75,30 +75,7 @@ $product = get_product_detail($_GET['id']);
     <!-- Font Awesome Script -->
     <script src="https://kit.fontawesome.com/0958c69058.js" crossorigin="anonymous"></script>
     <script>
-        window.onload = getdata();
         let quantity = 1;
-
-
-        function getdata() {
-            let id = document.getElementById('product').getAttribute('value');
-            let xhttp = new XMLHttpRequest();
-            xhttp.open("GET", "getData.php?id=" + id);
-            xhttp.onload = function() {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    let data = JSON.parse(xhttp.responseText)
-                    // console.log(data);
-                    var pprice = document.getElementById('price');
-                    var pstock = document.getElementById('stock');
-
-                    pstock.setAttribute('value', data.stock)
-
-                    pprice.setAttribute('value', data.price)
-                }
-            }
-            xhttp.send();
-        }
-
-
 
         const st = document.getElementById('stock');
 
@@ -109,7 +86,7 @@ $product = get_product_detail($_GET['id']);
 
         if (stocks != 0) {
             document.getElementById('number').innerHTML = quantity;
-            st.innerHTML = stval - quantity;
+            st.innerHTML = stval;
         } else if (stocks == 0) {
             document.getElementById('number').innerHTML = 0;
             st.innerHTML = 0;
@@ -131,8 +108,8 @@ $product = get_product_detail($_GET['id']);
                 }
                 quantity += 1;
                 document.getElementById('number').innerHTML = quantity;
-                st.innerHTML = stocks - quantity;
-                st.setAttribute('value', stocks - quantity);
+                // st.innerHTML = stocks - quantity;
+                // st.setAttribute('value', stocks - quantity);
                 price.setAttribute('value', priceval * quantity);
                 price.innerHTML = new Intl.NumberFormat().format(priceval * quantity);
 
@@ -151,8 +128,8 @@ $product = get_product_detail($_GET['id']);
                 }
                 quantity -= 1;
                 document.getElementById('number').innerHTML = quantity;
-                st.innerHTML = stocks - quantity;
-                st.setAttribute('value', stocks - quantity);
+                // st.innerHTML = stocks - quantity;
+                // st.setAttribute('value', stocks - quantity);
                 price.setAttribute('value', priceval * quantity);
                 price.innerHTML = new Intl.NumberFormat().format(priceval * quantity);
             }
@@ -167,10 +144,10 @@ $product = get_product_detail($_GET['id']);
                 let price = document.getElementById('price').getAttribute('value');
                 let id_product = document.getElementById('product').getAttribute('value');
                 let quantity = document.getElementById('number').innerHTML;
-                let stock = stocks - quantity;
+                // let stock = stocks - quantity;
 
-
-                let params = "id=" + id_product + "&price=" + price + "&quantity=" + quantity + "&stock=" + stock;
+                // let params = "id=" + id_product + "&price=" + price + "&quantity=" + quantity + "&stock=" + stock;
+                let params = "id=" + id_product + "&price=" + price + "&quantity=" + quantity;
 
                 let xhttp = new XMLHttpRequest();
                 xhttp.open("POST", "postData.php");
@@ -178,20 +155,18 @@ $product = get_product_detail($_GET['id']);
 
                 xhttp.onload = function() {
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
-                        xhttp.responseText = "";
                         console.log(xhttp.responseText);
                         let message = xhttp.responseText;
                         if (message == 'success') {
                             alert('data berhasil ditambahkan');
-                            location.reload();
                         } else if (message == 'error') {
                             alert('data gagal ditambahkan')
                         }
                     }
                 }
+                xhttp.send(params);
             };
 
-            xhttp.send(params);
         }
     </script>
 </body>

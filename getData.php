@@ -1,15 +1,16 @@
-<?php 
-  require 'db/db_conn.php'; 
-  
-    $id = $_GET['id'];
+<?php
+require 'db/db_conn.php';
 
-    
-    $query = "SELECT * FROM product WHERE id='$id'";
-    $result = mysqli_query($conn, $query);
-    
-    $product = mysqli_fetch_assoc($result);
+$query = "SELECT * FROM cart";
+$result = mysqli_query($conn, $query);
 
-    echo json_encode($product);
+if (mysqli_affected_rows($conn)) {
+  while ($data = mysqli_fetch_assoc($result)) {
+    $datalist[] = $data;
+  }
 
-  
-?>
+  echo json_encode($datalist);
+} else {
+  echo 'error';
+  // var_dump($datalist);
+}
