@@ -15,7 +15,7 @@ $price = (int)$product['price'];
 //   echo json_encode($price);
 $total_price= $price*$quantity;
 
-$sql = "UPDATE cart SET quantity='$quantity', total_price='$total_price' WHERE id_product='$id'";
+$sql = "UPDATE cart SET quantity='$quantity', total_price='$total_price', checked=1 WHERE id_product='$id'";
 
 mysqli_query($conn, $sql);
 

@@ -1,6 +1,6 @@
 <?php
 require_once('functions.php');
-$cart_items = get_all_cart();
+$cart_items = get_cart_checked();
 $order_counter = 1;
 $product_counter = 0;
 $total_price = 0;

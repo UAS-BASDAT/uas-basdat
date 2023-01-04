@@ -24,3 +24,12 @@
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $products;
   }
+
+  function get_cart_checked() {
+    global $conn;
+    $query = "SELECT product.*, cart.* FROM product  INNER JOIN cart ON cart.checked=1 AND cart.id_product = product.id";
+    // $query = "SELECT * FROM product RIGHT JOIN cart ON cart.checked=1 AND cart.id_product = product.id";
+    $result = mysqli_query($conn, $query);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+  }

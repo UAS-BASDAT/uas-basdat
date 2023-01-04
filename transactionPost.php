@@ -6,9 +6,9 @@ $quantity = $_POST['quantity'];
 
 
 
-
 $query = "SELECT * FROM product WHERE id=$id";
 $result = mysqli_query($conn, $query);
+$result2 = mysqli_query($conn, "DELETE FROM cart WHERE checked=1");
 $product = mysqli_fetch_assoc($result);
 
 $newstock = $product['stock'] - $quantity;
