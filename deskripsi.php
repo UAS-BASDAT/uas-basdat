@@ -157,10 +157,14 @@ $product = get_product_detail($_GET['id']);
                     if (xhttp.readyState == 4 && xhttp.status == 200) {
                         console.log(xhttp.responseText);
                         let message = xhttp.responseText;
+                        console.log(message);
                         if (message == 'success') {
                             alert('data berhasil ditambahkan');
                         } else if (message == 'error') {
                             alert('data gagal ditambahkan')
+                        }
+                        else if (message == 'full') {
+                            alert('Permintaan anda melebihi stock')
                         }
                     }
                 }

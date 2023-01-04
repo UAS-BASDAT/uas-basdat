@@ -447,16 +447,12 @@
                             // console.log(message);
 
                         }
+           
                     }
                     xhttp.send(params);
                 }
             }
-            if (message == 'success') {
-                alert('data berhasil ditambahkan');
-                console.log(xhttp.responseText);
-            } else if (message == 'error') {
-                alert('data gagal ditambahkan')
-            }
+            window.location.href = "checkout.php";
 
             // console.log(checkedBoxes);
         }
