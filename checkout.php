@@ -100,16 +100,18 @@ $total_price = 0;
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <?php foreach($cart_items as $i) :?>
                     <div class="row px-1">
-                        <div class="col h8 no-wrap hidden" style="white-space: no-wrap;">Baterai Lithium Sony Battery CR2032 CR 2032 CMOS Jam Komputer Laptop <br>
-                            <span class="h7 text-muted">Total Produk (0)</span>
+                        <div class="col h8 no-wrap hidden" style="white-space: no-wrap;"><?php echo $i['name']?><br>
+                            <span class="h7 text-muted"><?php echo $i['quantity']?></span>
                         </div>
-                        <div class="col h6 text-end">Rp 1.700</div>
+                        <div class="col h6 text-end">Rp<?php echo number_format($i['total_price'], 0, ',', '.')?></div>
                     </div>
+                    <?php endforeach?>
                     <hr class="dropdown-divider mt-3">
                     <div class="row px-1">
                         <div class="col h4">Total Pembayaran</div>
-                        <div class="col h4 text-end">Rp 1.700</div>
+                        <div class="col h4 text-end">Rp<?php echo number_format($total_price, 0, ',', '.')?></div>
                     </div>
                 </div>
                 <div class="modal-footer">
