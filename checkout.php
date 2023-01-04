@@ -1,3 +1,11 @@
+<?php 
+    require_once('functions.php');
+    $cart_items = get_all_cart();
+    $order_counter = 1;
+    $product_counter = 0;
+    $total_price = 0;
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -32,34 +40,37 @@
             <div class="col-8">
                 <div class="h3 fw-bold mb-4">Checkout</div>
                 <hr class="dropdown-divider">
-                <div class="h5 mt-3">Pesanan 1</div>
-                <div class="row mt-3">
-                    <div class="col-3">
-                        <img src="assets/image/batre.png" class="cart-img-checkbox rounded col-3 float-start" alt="">
+                <?php foreach($cart_items as $i) :?>
+                    <div class="h5 mt-3">Pesanan <?php echo $order_counter ?></div>
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <img src="<?php echo $i['image']?>" class="cart-img-checkbox rounded col-3 float-start" alt="">
+                        </div>
+                        <div class="col d-flex flex-column overflow-hidden">
+                            <div class="h6 fw-normal"><?php echo $i['name']?></div>
+                            <div class="h7 text-muted"><?php echo $i['quantity']?> Barang</div>
+                            <div class="h5 mt-2 fw-bold">Rp<?php echo number_format($i['price'], 0, ',', '.')?></div>
+                        </div>
                     </div>
-                    <div class="col d-flex flex-column overflow-hidden">
-                        <div class="h6 fw-normal">Meja Gaming Meja Komputer GG Gemink FLOTH FL120 - Merah</div>
-                        <div class="h7 text-muted">1 Barang</div>
-                        <div class="h5 mt-2 fw-bold">Rp 500.000</div>
+
+                    <hr class="dropdown-divider mt-4">
+
+                    <div class="row">
+                        <div class="col h4 mt-2">Subtotal</div>
+                        <div class="col h4 fw-bold text-end">Rp <?php echo number_format($i['total_price'], 0, ',', '.')?></div>
                     </div>
-                </div>
-
-                <hr class="dropdown-divider mt-4">
-
-                <div class="row">
-                    <div class="col h4 mt-2">Subtotal</div>
-                    <div class="col h4 fw-bold text-end">Rp 500.000</div>
-                </div>
+                    <?php $order_counter++; $product_counter += $i['quantity']; $total_price += $i['total_price']?>
+                <?php endforeach ?>
             </div>
             <div class="col">
                 <div class="card-body border-1 border-dark">
                     <div class="card-title fw-bold h4">Ringkasan Belanja</div>
                     <div class="row mt-2">
                         <div class="col">
-                            <div class="h6 overflow-hidden fw-normal max-width">Total Harga (1 Produk)</div>
+                            <div class="h6 overflow-hidden fw-normal max-width">Total Harga (<?php echo $product_counter?> Produk)</div>
                         </div>
                         <div class="col">
-                            <div class="h6 overflow-hidden fw-normal max-width text-end">Rp 500.000</div>
+                            <div class="h6 overflow-hidden fw-normal max-width text-end">Rp<?php echo number_format($total_price, 0, ',', '.')?></div>
                         </div>
                     </div>
 
@@ -70,7 +81,7 @@
                             <h5 class="text-muted mt-5 my-auto">Total Tagihan</h5>
                         </div>
                         <div class="col-6 mt-5">
-                            <div class="h5 text-end ">Rp 500.000</div>
+                            <div class="h5 text-end ">Rp<?php echo number_format($total_price, 0, ',', '.')?></div>
                         </div>
                     </div>
                     <div class="container-fluid d-flex justify-content-center">
