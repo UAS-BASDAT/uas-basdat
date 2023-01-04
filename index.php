@@ -1,6 +1,6 @@
-<?php 
-  require_once 'functions.php';
-  $products = get_products();
+<?php
+require_once 'functions.php';
+$products = get_products();
 ?>
 
 <!doctype html>
@@ -35,19 +35,19 @@
                 <img src="assets/image/banner.webp" class="d-block mx-auto carousel-img" alt="">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="assets/image/Picture.png" class="d-block mx-auto carousel-img" alt="">
+                <img src="assets/image/banner1.webp" class="d-block mx-auto carousel-img" alt="">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
                 <img src="assets/image/meja.png" class="d-block mx-auto carousel-img" alt="">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="assets/image/Picture.png" class="d-block mx-auto carousel-img" alt="">
+                <img src="assets/image/banner2.jpg" class="d-block mx-auto carousel-img" alt="">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="assets/image/Picture.png" class="d-block mx-auto carousel-img" alt="">
+                <img src="assets/image/banner3.jpg" class="d-block mx-auto carousel-img" alt="">
             </div>
             <div class="carousel-item" data-bs-interval="3000">
-                <img src="assets/image/Picture.png" class="d-block mx-auto carousel-img" alt="">
+                <img src="assets/image/batre.png" class="d-block mx-auto carousel-img" alt="">
             </div>
         </div>
     </div>

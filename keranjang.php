@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?php include 'includes/navbar.php'?>
+    <?php include 'includes/navbar.php' ?>
 
     <div class="container" style="margin-top: 150px;">
         <div class="row">
@@ -59,7 +59,7 @@
         </div>
     </div>
 
-    
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -119,9 +119,9 @@
                                 "<div class='counter ms-4'>" +
                                 "<div class='vr'></div>" +
                                 "<div class='col-4 d-flex justify-content-between align-items-center'>" +
-                                "<button class='btn btn-primary p-1 mr-3 plus' style='font-size:10px;' id='plus_" + dataProduct[index].id_product + "' onclick='plus(this)'><i class='fa-solid fa-plus'></i></button>" +
+                                "<button class='btn btn-primary p-1 me-3 minus' style='font-size:10px;' id='minus_" + dataProduct[index].id_product + "' onclick='minus(this)'><i class='fa-solid fa-minus'></i></button>" +
                                 "<div class='quantity' id='number_" + dataProduct[index].id_product + "'  value='" + dataProduct[index].quantity + "'>" + dataProduct[index].quantity + "</div>" +
-                                "<button class='btn btn-primary p-1 minus' style='font-size:10px;' id='minus_" + dataProduct[index].id_product + "' onclick='minus(this)'><i class='fa-solid fa-minus'></i></button>" +
+                                "<button class='btn btn-primary p-1 ms-3 me-3 plus' style='font-size:10px;' id='plus_" + dataProduct[index].id_product + "' onclick='plus(this)'><i class='fa-solid fa-plus'></i></button>" +
                                 "<div class='stock' id='stock_" + dataProduct[index].id_product + "'> </div>" +
                                 "</div>" +
                                 "</div>" +
@@ -292,7 +292,6 @@
                 //     price.innerHTML = new Intl.NumberFormat().format(priceval * quantity);
 
             }
-            location.reload();
         }
 
 
@@ -365,7 +364,7 @@
                             // console.log(message);
 
                         }
-           
+
                     }
                     xhttp.send(params);
                 }
