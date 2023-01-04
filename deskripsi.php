@@ -41,9 +41,9 @@ $product = get_product_detail($_GET['id']);
                         <div class="row">
                             <div class="row px-3">
                                 <div class="col-6 d-flex justify-content-between align-items-center">
-                                    <button class="btn btn-primary p-1" style="font-size:10px;" id="plus" onclick="plus(this)"><i class="fa-solid fa-plus"></i></button>
-                                    <div id="number"></div>
                                     <button class="btn btn-primary p-1" style="font-size:10px;" id="minus" onclick="minus(this)"><i class="fa-solid fa-minus"></i></button>
+                                    <div id="number"></div>
+                                    <button class="btn btn-primary p-1" style="font-size:10px;" id="plus" onclick="plus(this)"><i class="fa-solid fa-plus"></i></button>
                                 </div>
                                 <div class="col-5  d-flex align-items-center">
                                     <h7>Stock : <span id="stock" value="<?= $product['stock'] ?>"></span>
@@ -162,8 +162,7 @@ $product = get_product_detail($_GET['id']);
                             alert('data berhasil ditambahkan');
                         } else if (message == 'error') {
                             alert('data gagal ditambahkan')
-                        }
-                        else if (message == 'full') {
+                        } else if (message == 'full') {
                             alert('Permintaan anda melebihi stock')
                         }
                     }
