@@ -1,4 +1,5 @@
 # Projek Ujian Akhir Semester Basis Data
+## Program Studi : Ilmu Komputer 2021
 ## Kelompok 3
 ### Anggota Kelompok :
 - Danan Danurwenda Adi Kusuma (1313621017)
