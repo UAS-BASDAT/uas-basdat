@@ -39,13 +39,13 @@ $total_price = 0;
                 <hr class="dropdown-divider">
                 <?php foreach ($cart_items as $i) : ?>
                     <div class="h5 mt-3">Pesanan <?php echo $order_counter ?></div>
-                    <div class="row mt-3">
+                    <div class="row mt-3 id_product" value="<?= $i['id_product'] ?>">
                         <div class="col-3">
                             <img src="<?php echo $i['image'] ?>" class="cart-img-checkbox rounded col-3 float-start" alt="">
                         </div>
                         <div class="col d-flex flex-column overflow-hidden">
                             <div class="h6 fw-normal"><?php echo $i['name'] ?></div>
-                            <div class="h7 text-muted"><?php echo $i['quantity'] ?> Barang</div>
+                            <div class="h7 text-muted" id="<?php echo "quantity" . ((string)$i['id_product']) ?>" value="<?= $i['quantity'] ?>"><?php echo $i['quantity'] ?> Barang</div>
                             <div class="h5 mt-2 fw-bold">Rp<?php echo number_format($i['price'], 0, ',', '.') ?></div>
                         </div>
                     </div>
@@ -84,8 +84,37 @@ $total_price = 0;
                         </div>
                     </div>
                     <div class="container-fluid d-flex justify-content-center">
-                        <div class="btn btn-success w-100 mt-3 fw-bold">Beli</div>
+                        <div class="btn btn-success w-100 mt-3 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">Beli</div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Pembelian</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row px-1">
+                        <div class="col h8 no-wrap hidden" style="white-space: no-wrap;">Baterai Lithium Sony Battery CR2032 CR 2032 CMOS Jam Komputer Laptop <br>
+                            <span class="h7 text-muted">Total Produk (0)</span>
+                        </div>
+                        <div class="col h6 text-end">Rp 1.700</div>
+                    </div>
+                    <hr class="dropdown-divider mt-3">
+                    <div class="row px-1">
+                        <div class="col h4">Total Pembayaran</div>
+                        <div class="col h4 text-end">Rp 1.700</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-success" onclick="submit()">Bayar</button>
                 </div>
             </div>
         </div>
@@ -98,34 +127,33 @@ $total_price = 0;
 
 <script>
     function submit() {
+       
 
+        var elements = document.getElementsByClassName("id_product");
+        for (var i = 0, len = elements.length; i < len; i++) {
 
-        let price = document.getElementById('price').getAttribute('value');
-        let id_product = document.getElementById('product').getAttribute('value');
-        let quantity = document.getElementById('number').innerHTML;
-        // let stock = stocks - quantity;
+            let id_product = elements[i].getAttribute('value');
+            let quantity = elements[i].parentNode.querySelector('#quantity' + id_product).getAttribute('value');
+            // console.log(id_product);
 
-        // let params = "id=" + id_product + "&price=" + price + "&quantity=" + quantity + "&stock=" + stock;
-        let params = "id=" + id_product + "&price=" + price + "&quantity=" + quantity;
+            let params = "id=" + id_product + "&quantity=" + quantity;
 
-        let xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "postData.php");
-        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+            let xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "transactionPost.php");
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 
-        xhttp.onload = function() {
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                console.log(xhttp.responseText);
-                let message = xhttp.responseText;
-                console.log(message);
-                if (message == 'success') {
-                    alert('data berhasil ditambahkan');
-                } else if (message == 'error') {
-                    alert('data gagal ditambahkan')
-                } else if (message == 'full') {
-                    alert('Permintaan anda melebihi stock')
+            xhttp.onload = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200) {
+                    console.log(xhttp.responseText);
+                    let message = xhttp.responseText;
+                    console.log(message);
                 }
             }
+            xhttp.send(params);
+
         }
-        xhttp.send(params);
+        alert('pembayaran berhasil');
+        window.location.href = "index.php";
+
     };
 </script>
