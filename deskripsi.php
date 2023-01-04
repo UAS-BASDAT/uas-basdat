@@ -170,7 +170,7 @@ $product = get_product_detail($_GET['id']);
                 }
                 xhttp.send(params);
             };
-
+            location.reload();
         }
     </script>
 </body>

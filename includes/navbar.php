@@ -24,7 +24,7 @@
                 </form>
                 <li class="nav-item dropdown ms-5 my-auto">
                     <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="fa-stack" data-count="2">
+                        <span class="fa-stack" data-count="<?php echo $total_quantity?>">
                             <i class="fa-solid fa-cart-shopping fa-stack-1x fa-inverse" style="font-size: 25px; color: black;"></i>
                         </span>
                     </a>
