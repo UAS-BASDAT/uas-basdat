@@ -22,7 +22,7 @@ $total_price = 0;
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid justify-content-center">
-            <a class="navbar-brand ms-5" href="">Warunk Ilkomp</a>
+            <a class="navbar-brand ms-5" href="index.php">Warunk Ilkomp</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -102,7 +102,7 @@ $total_price = 0;
                 <div class="modal-body">
                     <?php foreach($cart_items as $i) :?>
                     <div class="row px-1">
-                        <div class="col h8 no-wrap hidden" style="white-space: no-wrap;"><?php echo $i['name']?><br>
+                        <div class="col h8 hidden" style="white-space: no-wrap;"><?php echo $i['name']?><br>
                             <span class="h7 text-muted"><?php echo $i['quantity']?></span>
                         </div>
                         <div class="col h6 text-end">Rp<?php echo number_format($i['total_price'], 0, ',', '.')?></div>
